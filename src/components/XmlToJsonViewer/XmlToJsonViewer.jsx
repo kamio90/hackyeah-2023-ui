@@ -1,114 +1,131 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const XmlToJsonViewer = () => {
-    const [jsonOutput, setJsonOutput] = useState(null);
+  const [jsonOutput, setJsonOutput] = useState(null);
 
-    const xmlToJson = (xml) => {
-        let obj = {};
+  const xmlToJson = (xml) => {
+    let obj = {};
 
-        if (xml.nodeType === 3) { // TEXT_NODE
-            return xml.nodeValue.trim();
+    if (xml.nodeType === 3) {
+      // TEXT_NODE
+      return xml.nodeValue.trim();
+    }
+
+    if (xml.hasAttributes && xml.hasAttributes()) {
+      const attributes = xml.attributes;
+      for (let i = 0; i < attributes.length; i++) {
+        const attribute = attributes.item(i);
+        obj[attribute.nodeName] = attribute.nodeValue;
+      }
+    }
+
+    if (xml.hasChildNodes && xml.hasChildNodes()) {
+      const childNodes = xml.childNodes;
+      for (let i = 0; i < childNodes.length; i++) {
+        const item = childNodes.item(i);
+        const nodeName = item.nodeName;
+        const content = xmlToJson(item);
+        if (obj[nodeName]) {
+          if (!Array.isArray(obj[nodeName])) {
+            obj[nodeName] = [obj[nodeName]];
+          }
+          obj[nodeName].push(content);
+        } else {
+          obj[nodeName] = content;
         }
+      }
+    }
 
-        if (xml.hasAttributes && xml.hasAttributes()) {
-            const attributes = xml.attributes;
-            for (let i = 0; i < attributes.length; i++) {
-                const attribute = attributes.item(i);
-                obj[attribute.nodeName] = attribute.nodeValue;
-            }
-        }
+    return obj;
+  };
 
-        if (xml.hasChildNodes && xml.hasChildNodes()) {
-            const childNodes = xml.childNodes;
-            for (let i = 0; i < childNodes.length; i++) {
-                const item = childNodes.item(i);
-                const nodeName = item.nodeName;
-                const content = xmlToJson(item);
-                if (obj[nodeName]) {
-                    if (!Array.isArray(obj[nodeName])) {
-                        obj[nodeName] = [obj[nodeName]];
-                    }
-                    obj[nodeName].push(content);
-                } else {
-                    obj[nodeName] = content;
-                }
-            }
-        }
+  const filterAndTransformXmlToJson = (xml) => {
+    let obj = xmlToJson(xml);
 
-        return obj;
+    // Remove the "Styles" property
+    removeStylesProperty(obj);
+
+    console.log(obj);
+
+    return obj;
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(e.target.result, "text/xml");
+      const jsonResult = filterAndTransformXmlToJson(xmlDoc);
+      setJsonOutput(jsonResult);
     };
+    reader.readAsText(file);
+  };
 
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(e.target.result, "text/xml");
-            const jsonResult = xmlToJson(xmlDoc);
-            setJsonOutput(jsonResult);
-        };
-        reader.readAsText(file);
-    };
-
-    const extractValuesFromJson = (json, keys) => {
-        const getValue = (obj, key) => {
-          const parts = key.split('.');
-          let current = obj;
-          for (let part of parts) {
-            if (current[part] === undefined) {
-              return undefined;
-            }
-            current = current[part];
-          }
-          return current;
-        };
-      
-        return keys.map(key => getValue(json, key));
-      };
-      
-      // Przykład użycia:
-      const jsonData = {
-        osoba: {
-          imie: "Jan",
-          nazwisko: "Kowalski",
-          adres: {
-            ulica: "Mickiewicza",
-            miasto: "Warszawa"
-          }
-        },
-        praca: {
-          stanowisko: "Programista",
-          firma: {
-            nazwa: "TechCorp",
-            adres: {
-              ulica: "Długa",
-              miasto: "Kraków"
-            }
-          }
-        }
-      };
-      
-    //   const keysToExtract = ["osoba.imie", "praca.firma.nazwa"];
-    //   const extractedValues = extractValuesFromJson(jsonData, keysToExtract);
-    //   console.log(extractedValues); // ["Jan", "TechCorp"]
-
-    return (
+  return (
+    <div>
+      <h2>Przekształć plik XML do formatu JSON:</h2>
+      <form>
+        <input type="file" accept=".xml" onChange={handleFileChange} />
+      </form>
+      {jsonOutput && (
         <div>
-            <h2>Przekształć plik XML do formatu JSON:</h2>
-            <form>
-                <input type="file" accept=".xml" onChange={handleFileChange} />
-            </form>
-            {jsonOutput && (
-                <div>
-                    <h3>Dane z pliku XML w formacie JSON:</h3>
-                    {/* <pre>{extractValuesFromJson(jsonOutput, ["osoba.imie", "praca.firma.nazwa"])}</pre> */}
-                    <pre>{JSON.stringify(jsonOutput, null, 2)}</pre>
-                </div>
-            )}
+          <h3>Dane z pliku XML w formacie JSON:</h3>
+          <pre>{JSON.stringify(jsonOutput, null, 2)}</pre>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default XmlToJsonViewer;
+
+function removeStylesProperty(obj) {
+  delete obj.Workbook.Styles;
+  delete obj["mso-application"];
+  delete obj.Workbook["xmlns"];
+  delete obj.Workbook["xmlns:html"];
+  delete obj.Workbook["xmlns:o"];
+  delete obj.Workbook["xmlns:ss"];
+  delete obj.Workbook["xmlns:x"];
+  delete obj.Workbook["ss:DocumentProperties"];
+  delete obj.Workbook["DocumentProperties"];
+  delete obj.Workbook["OfficeDocumentSettings"];
+  delete obj.Workbook["ExcelWorkbook"];
+  delete obj.Workbook["#text"];
+
+  removeStylesFromAllWorkSheets(obj);
+}
+
+function removeStylesFromAllWorkSheets(obj) {
+  const lengthOfWorksheet = obj.Workbook.Worksheet.length;
+  for (let i = 0; i < lengthOfWorksheet; i++) {
+    delete obj.Workbook["Worksheet"][i]["AutoFilter"];
+    delete obj.Workbook["Worksheet"][i]["Names"];
+    delete obj.Workbook["Worksheet"][i]["WorksheetOptions"];
+    delete obj.Workbook["Worksheet"][i]["#text"];
+    delete obj.Workbook["Worksheet"][i]["Table"]["#text"];
+    delete obj.Workbook["Worksheet"][i]["Table"]["ss:DefaultRowHeight"];
+    delete obj.Workbook["Worksheet"][i]["Table"]["ss:ExpandedColumnCount"];
+    delete obj.Workbook["Worksheet"][i]["Table"]["ss:ExpandedRowCount"];
+    delete obj.Workbook["Worksheet"][i]["Table"]["ss:StyleID"];
+    delete obj.Workbook["Worksheet"][i]["Table"]["x:FullRows"];
+    delete obj.Workbook["Worksheet"][i]["Table"]["x:FullColumns"];
+    delete obj.Workbook["Worksheet"][i]["Table"]["Column"];
+
+    for (
+      let j = 0;
+      j < obj.Workbook["Worksheet"][i]["Table"]["Row"].length;
+      j++
+    ) {
+      delete obj.Workbook["Worksheet"][i]["Table"]["Row"][j]["#text"];
+      delete obj.Workbook["Worksheet"][i]["Table"]["Row"][j][
+        "ss:AutoFitHeight"
+      ];
+      delete obj.Workbook["Worksheet"][i]["Table"]["Row"][j]["ss:Height"];
+      delete obj.Workbook["Worksheet"][i]["Table"]["Row"][j]["ss:StyleID"];
+    }
+  }
+}
