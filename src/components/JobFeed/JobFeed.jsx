@@ -11,7 +11,7 @@ function NewsFeed () {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch('http://localhost:3000/job-offer', { method: 'GET' });
+                const response = await fetch('https://hackyeah-2023-api-circle-edge.onrender.com/job-offer', { method: 'GET' });
                 if (response.status === 200) {
                     const data = await response.json();
                     setJobData(data);

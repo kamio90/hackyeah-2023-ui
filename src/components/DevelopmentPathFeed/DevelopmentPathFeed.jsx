@@ -10,7 +10,7 @@ function DeveloperPathFeed() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch('http://localhost:3000/development-path', { method: 'GET' });
+                const response = await fetch('https://hackyeah-2023-api-circle-edge.onrender.com/development-path', { method: 'GET' });
                 if (response.status === 200) {
                     const data = await response.json();
                     setDevelopmentPathData(data);
