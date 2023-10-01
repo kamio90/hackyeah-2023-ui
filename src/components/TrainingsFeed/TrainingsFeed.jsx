@@ -11,7 +11,7 @@ function TrainingsFeed() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch('http://localhost:3000/trening', { method: 'GET' });
+                const response = await fetch('https://hackyeah-2023-api-circle-edge.onrender.com/trening', { method: 'GET' });
                 if (response.status === 200) {
                     const data = await response.json();
                     setTrainingData(data);
@@ -37,18 +37,18 @@ function TrainingsFeed() {
                     {trainingData.map((training, index) => (
                         <div className="training" key={index}>
                             <div className="training-image">
-                                <img src={john} alt="" />
+                                <img src={training.companyLogo} alt="" />
                             </div>
                             <div className="training-description">
                                 <div className="training-title">
-                                    <h3>{training.description}</h3>
+                                    <h3>{training.title}</h3>
                                 </div>
                                 <div className="training-firm">
-                                    <p>{training.title}</p>
+                                    <p>{training.description}</p>
                                 </div>
                                 <div className="training-description-inner">
                                     <div className="training-description-city">
-                                        <p><FontAwesomeIcon icon={faLocationPin} /> Kraków, 16-17 listopada 2023 </p>
+                                        <p><FontAwesomeIcon icon={faLocationPin} /> {training.treningDesc}Kraków, 16-17 listopada 2023 </p>
                                     </div>
                                 </div>                
                             </div>

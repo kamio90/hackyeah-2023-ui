@@ -38,7 +38,7 @@ function NewsFeed () {
                     {jobData.map((job, index) => (
                     <div className="job" key={index}>
                         <div className="job-image">
-                            <img src={john} alt="" />
+                            <img src={job.companyLogo} alt="" />
                         </div>
                         <div className="job-description">
                             <div className="job-title">
@@ -49,22 +49,22 @@ function NewsFeed () {
                             </div>
                             <div className="job-description-inner">
                                 <div className="job-description-city">
-                                    <p><FontAwesomeIcon icon={faLocationPin} /> Kraków</p>
+                                    <p><FontAwesomeIcon icon={faLocationPin} /> {job.localization}</p>
                                 </div>
                                 <div className="job-description-contact">
-                                    <p><FontAwesomeIcon icon={faFile} /> Kontrakt B2B</p>
+                                    <p><FontAwesomeIcon icon={faFile} /> {job.contract}</p>
                                 </div>
                                 <div className="job-description-level">
-                                    <p><FontAwesomeIcon icon={faFile} /> Mid/Regular</p>
+                                    <p><FontAwesomeIcon icon={faFile} /> {job.skill}</p>
                                 </div>
                             </div>                
                         </div>
                         <div className="job-additional-info">
                             <h3>Znamy widełki</h3>
                             <div className="badges">
-                                <p>HTML</p>
-                                <p>CSS3</p>
-                                <p>JS</p>
+                                {job.stack.map((jobI, index) => (
+                                    <p key={index}>{jobI}</p>
+                                ))}
                             </div>
                         </div>
                     </div>
