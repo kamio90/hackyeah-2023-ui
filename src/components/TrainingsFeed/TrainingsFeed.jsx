@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './trainingsFeed.scss'
-import john from './john.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationPin, faFile } from '@fortawesome/free-solid-svg-icons'
+import './trainingsFeed.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationPin} from '@fortawesome/free-solid-svg-icons';
 
 function TrainingsFeed() {
     const [trainingData, setTrainingData] = useState([]);
