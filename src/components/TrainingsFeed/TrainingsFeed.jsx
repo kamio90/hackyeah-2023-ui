@@ -48,17 +48,17 @@ function TrainingsFeed() {
                                 </div>
                                 <div className="training-description-inner">
                                     <div className="training-description-city">
-                                        <p><FontAwesomeIcon icon={faLocationPin} /> {training.treningDesc}Kraków, 16-17 listopada 2023 </p>
+                                        <p><FontAwesomeIcon icon={faLocationPin} /> Kraków, 16-17 listopada 2023 </p>
                                     </div>
                                 </div>                
                             </div>
                             <div className="training-additional-info">
                                 <div className="training-additional-info-desc">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda iusto adipisci reiciendis incidunt quod rem explicabo, magnam nostrum dolores nihil corrupti dolorum quaerat facere hic provident maxime, labore aliquid! Laborum.</p>
+                                    <p>{training.treningDesc}</p>
                                 </div>
                                 <div className="training-additional-info-buttons">
-                                    <h3>1350zł</h3>
-                                    <a href="">Zapisz się</a>
+                                    <h3>{training.price}</h3>
+                                    <a href={training.link}>Zapisz się</a>
                                 </div>
                             </div>
                         </div>

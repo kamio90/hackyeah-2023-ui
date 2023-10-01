@@ -56,16 +56,11 @@ function eventsFeed() {
             {loading ? (
                 <p>Ładowanie danych...</p>
             ) : (
-                <Slider {...settings}
-                    // centerMode
-                    // centerSlidePercentage={32}
-                    // infiniteLoop
-                    // slidesToShow={3}
-                >
+                <Slider {...settings}>
                     {eventFeedData.map((event, index) => (
                         <div className="event" key={index}>
                             <div className="event-image">
-                                <img src={john} alt="" />
+                                <img src="https://gozdzikv.ayz.pl/john.png" alt="" />
                             </div>
                             <div className="event-description">
                                 <div className="event-title">
