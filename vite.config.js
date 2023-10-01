@@ -1,17 +1,13 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   build: {
-    rollupOptions: {
-      external: ["react", "react-router", "react-router-dom"],
-      output: {
-        globals: {
-          react: "React",
-        },
-      },
-    },
-  }
-})
+    outDir: 'dist', // Katalog wyjściowy dla zbudowanego projektu
+    assetsDir: 'assets', // Katalog, w którym będą przechowywane zasoby (obrazy, pliki CSS, itp.)
+  },
+  server: {
+    port: 3000, // Port, na którym uruchomiony będzie serwer deweloperski
+  },
+});
