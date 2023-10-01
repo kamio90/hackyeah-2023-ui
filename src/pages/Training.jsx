@@ -4,7 +4,7 @@ import TrainingsFeed from '../components/TrainingsFeed/TrainingsFeed';
 
 function Training () {
     return <>
-        <Header />
+        {/* <Header /> */}
         <section>
             <div className="container">
                 <TrainingsFeed />

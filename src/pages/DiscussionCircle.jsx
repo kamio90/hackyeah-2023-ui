@@ -4,7 +4,7 @@ import DiscusstionCircleFeed from '../components/DiscusstionCircleFeed/Discussti
 
 function DiscussionCircle () {
     return <>
-        <Header />
+        {/* <Header /> */}
         <section>
             <div className="container">
                 <DiscusstionCircleFeed />

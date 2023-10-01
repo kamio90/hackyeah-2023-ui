@@ -5,7 +5,7 @@ import DevelopmentPathFeed from '../components/DevelopmentPathFeed/DevelopmentPa
 
 function DeveloperPath () {
     return <>
-        <Header />
+        {/* <Header /> */}
         <section>
             <div className="container">
                 <DevelopmentPathFeed />

@@ -5,7 +5,7 @@ import JobFeed from '../components/JobFeed/JobFeed';
 
 function JobOffer () {
     return <>
-        <Header />
+        {/* <Header /> */}
         <section>
             <div className="container">
                 <JobFeed />

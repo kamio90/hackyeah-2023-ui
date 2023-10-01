@@ -14,63 +14,25 @@ import Projects from "./pages/Projects";
 import Quiz from "./pages/Quiz";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Main />,
-  },
-  {
-    path: "/job-offer",
-    element: <JobOffer />,
-  },
-  {
-    path: "/trainings",
-    element: <Training />,
-  },
-  {
-    path: "/developer-path",
-    element: <DeveloperPath />,
-  },
-  {
-    path: "/events",
-    element: <Events />,
-  },
-  {
-    path: "/discussion-circles",
-    element: <DiscussionCircle />,
-  },
-  {
-    path: "/projects",
-    element: <Projects />,
-  },
-  {
-    path: "/quiz",
-    element: <Quiz />,
-  },
-]);
-
 function App() {
   return (
     <>
       <React.StrictMode>
         <Router>
           <div>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-              </ul>
-            </nav>
+            <Header />
 
             <hr />
 
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/job-offer" element={<JobOffer />} />
+              <Route path="/trainings" element={<Training />} />
+              <Route path="/developer-path" element={<DeveloperPath />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/discussion-circles" element={<DiscussionCircle />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/quiz" element={<Quiz />} />
             </Routes>
           </div>
         </Router>

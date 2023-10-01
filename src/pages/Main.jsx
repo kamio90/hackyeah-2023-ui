@@ -4,7 +4,7 @@ import NewsFeed from '../components/NewsFeed/NewsFeed';
 
 function Main() {
     return <>
-        <Header />
+        {/* <Header /> */}
         <section>
             <div className="container">
                 <NewsFeed />

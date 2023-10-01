@@ -4,7 +4,7 @@ import QuizFeed from '../components/QuizFeed/QuizFeed';
 
 function DiscussionCircle () {
     return <>
-        <Header />
+        {/* <Header /> */}
         <section>
             <div className="container">
                 <QuizFeed />

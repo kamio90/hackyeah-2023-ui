@@ -4,7 +4,7 @@ import ProjectsFeed from '../components/ProjectsFeed/ProjectsFeed';
 
 function DiscussionCircle () {
     return <>
-        <Header />
+        {/* <Header /> */}
         <section>
             <div className="container">
                 <ProjectsFeed />

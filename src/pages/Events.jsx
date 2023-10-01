@@ -4,7 +4,7 @@ import EventFeed from '../components/EventFeed/EventFeed';
 
 function Events () {
     return <>
-        <Header />
+        {/* <Header /> */}
         <section>
             <div className="container">
                 <EventFeed />
