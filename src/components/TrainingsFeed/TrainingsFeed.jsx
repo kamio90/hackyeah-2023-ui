@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './trainingsFeed.scss';
+import './TrainingsFeed.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationPin} from '@fortawesome/free-solid-svg-icons';
 
