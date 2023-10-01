@@ -1,0 +1,65 @@
+.job {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 5px;
+    padding: 10px;
+
+    h3 {
+        margin-top: 0;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+    
+    &-image {
+        flex-basis: 100px;
+        display: inline-flex;
+        align-items: center;
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+
+    &-description {
+        flex-basis: calc(50% - 100px);
+        padding-left: 20px;
+
+        &-inner {
+            display: flex;
+            flex-wrap: wrap;
+
+            > div {
+                margin-right: 15px;
+            }
+        }
+    }
+
+    &-additional-info {
+        display: inline-flex;
+        flex-wrap: wrap;
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-grow: 1;
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+
+            p {
+                margin-left: 10px;
+                padding: 5px;
+                border-radius: 5px;
+                background-color: gray;
+                color: #000;
+            }
+        }
+    }
+}

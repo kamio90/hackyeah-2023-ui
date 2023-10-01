@@ -1,0 +1,33 @@
+.tile-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    .tile {
+        flex-basis: 32%;
+        height: 300px;
+        margin: 10px 0;
+        
+
+        &:nth-of-type(3n + 2) {
+            margin: 10px 2%;
+        }
+
+        p {
+            height: 100%;
+            width: 100%;
+
+            a {
+                color: #000;
+                transition: .4s;
+                display: inline-flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                background-color: grey;
+                transition: .4s;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
