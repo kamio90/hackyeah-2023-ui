@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './DevelopmentPathFeed.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationPin, faFile } from '@fortawesome/free-solid-svg-icons'
 
 function DeveloperPathFeed() {
     const [developmentPathData, setDevelopmentPathData] = useState([]);
@@ -27,8 +25,12 @@ function DeveloperPathFeed() {
         fetchData();
     }, []);
     return <>
-        <div>
-            <h1>Ścieżki rozwoju</h1>
+        <section>
+            <header>
+                <h1>Ścieżki rozwoju</h1>
+                <p>Tutaj prezentowane są możliwe ścieżki kariery. Przygotowane przez firmy kursy, które mogą przygotować Cię, do podjęcia nowej pracy.</p>
+            </header>
+            
             {loading ? (
                 <p>Ładowanie danych...</p>
             ) : (
@@ -41,7 +43,7 @@ function DeveloperPathFeed() {
                     ))}
                 </div>
             )}
-        </div>
+        </section>
     </>
 }
 

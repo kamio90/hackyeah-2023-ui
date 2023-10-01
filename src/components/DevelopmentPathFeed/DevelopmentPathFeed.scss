@@ -2,14 +2,29 @@
     display: flex;
     flex-wrap: wrap;
 
+    @media all and (max-width: 992px) {
+        justify-content: space-between;
+    }
+
     .tile {
         flex-basis: 32%;
         height: 300px;
         margin: 10px 0;
-        
+
+        @media all and (max-width: 992px) {
+            flex-basis: 48%;
+        }
+
+        @media all and (max-width: 768px) {
+            flex-basis: 100%;
+        }
 
         &:nth-of-type(3n + 2) {
             margin: 10px 2%;
+
+            @media all and (max-width: 992px) {
+                margin: 10px 0;
+            }
         }
 
         p {
@@ -23,10 +38,13 @@
                 flex-wrap: wrap;
                 justify-content: center;
                 align-items: center;
-                background-color: grey;
+                background-color: #6264FC;
                 transition: .4s;
                 width: 100%;
                 height: 100%;
+                text-decoration: none;
+                color: #fff;
+                position: relative;
             }
         }
     }

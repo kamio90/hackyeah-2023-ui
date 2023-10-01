@@ -49,7 +49,7 @@ function DiscusstionCircle() {
         fetchDataUe();
     }, []);
     return <>
-        <div>
+        <section>
             <h1>Grupy dyskusyjne</h1>
             {loading ? (
                 <p>Ładowanie danych...</p>
@@ -88,7 +88,7 @@ function DiscusstionCircle() {
                     ))}
                 </div>
             )}
-        </div>
+        </section>
     </>
 }
 

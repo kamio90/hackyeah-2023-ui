@@ -29,7 +29,7 @@ function NewsFeed () {
     }, []);
 
     return <>
-        <div>
+        <section>
             <h1>Oferty pracy</h1>
             {loading ? (
                 <p>Ładowanie danych...</p>
@@ -71,7 +71,7 @@ function NewsFeed () {
                     ))}
                 </div>
             )}
-        </div>
+        </section>
         
         
     </>

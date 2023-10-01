@@ -17,7 +17,9 @@
 
         &-description {
             a {
-                color: gray;
+                // color: gray;
+                color: #fff;
+                text-decoration: none;
                 transition: .4s;
 
                 &:hover {

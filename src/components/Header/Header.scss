@@ -1,14 +1,91 @@
 * {
     box-sizing: border-box;
+    color: #fff;
 }
 
 body {
-    background-color:rgb(93, 77, 77)
+    background-color:#003447;
 }
 
-header {
+.coins {
+    font-size: 20px;
+    svg {
+        path {
+            fill: #d4af37;
+        }
+    }
+}
+
+.rectangle {
+    background-color: rgba(255, 255, 255, .15);
+    position: absolute;
+
+    &-1 {
+        right: 70px;
+        width: 150px;
+        height: 250px;
+        top: 300px;
+        transform: translateY(-50%);
+    }
+}
+
+#root {
+    padding-top: 85px;
+
+    > div {
+        // position: relative;
+    }
+}
+
+.circle {
+    background-color: rgba(255, 255, 255, .05);
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    border-radius: 50%;
+
+    &-2 {
+        left: unset;
+        bottom: unset;
+        left: 50%;
+        top: 180px;
+        transform: translate(-50%, -50%);
+    }
+}
+
+h1 {
+    position: relative;
+    text-transform: uppercase;
+    display: inline-block;
+    font-size: 2em;
+    line-height: 1;
+    margin-top: 0;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        height: 8px;
+        width: 90%;
+        background-color: rgba(98, 100, 252, .5);
+    }
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    background-color: rgba(98, 100, 252, 1);
+    width: 100%;
+
     nav {
         position: relative;
+
+        @media all and (max-width: 1200px) {
+            padding: 0 15px;
+        }
 
         ul {
             list-style: none;
@@ -20,6 +97,8 @@ header {
                 left: 0;
                 width: 100%;
                 top: 30px;
+                background-color: #003447;
+                text-align: center;
             }
            
             &.show {
@@ -42,7 +121,7 @@ header {
                     align-items: center;
                     height: 50px;
                     width: 110px;
-                    color: grey;
+                    color: #fff;
                     transition: 0.4s;
                     padding: 0;
 
@@ -68,7 +147,7 @@ header {
         span {
             width: calc(100% - 10px);
             height: 2px;
-            background-color: #fff;
+            background-color: #003447;
             border-radius: 5px;
             position: absolute;
             left: 5px;
@@ -87,4 +166,8 @@ header {
             }
         }
     }
+}
+
+.section-header {
+    margin-bottom: 70px;
 }

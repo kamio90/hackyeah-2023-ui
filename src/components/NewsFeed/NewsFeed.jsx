@@ -26,7 +26,7 @@ function NewsFeed() {
     }, []);
 
     return (
-        <div>
+        <section>
             {loading ? (
                 <p>Ładowanie danych...</p>
             ) : (
@@ -48,7 +48,7 @@ function NewsFeed() {
                     ))}
                 </div>
             )}
-        </div>
+        </section>
     );
 }
 

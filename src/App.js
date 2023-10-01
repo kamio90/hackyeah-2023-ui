@@ -1,9 +1,6 @@
 import React from "react";
 import "./App.scss";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Header from "./components/Header/Header";
-import NewsFeed from "./components/NewsFeed/NewsFeed";
-import JobFeed from "./components/JobFeed/JobFeed";
 import Main from "./pages/Main";
 import JobOffer from "./pages/JobOffer";
 import Training from "./pages/Training";
@@ -12,7 +9,7 @@ import Events from "./pages/Events";
 import DiscussionCircle from "./pages/DiscussionCircle";
 import Projects from "./pages/Projects";
 import Quiz from "./pages/Quiz";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -20,9 +17,11 @@ function App() {
       <React.StrictMode>
         <Router>
           <div>
+            <div aria-hidden="true" className="rectangle rectangle-1"></div>
+            <div aria-hidden="true" className="rectangle rectangle-2"></div>
+            <div aria-hidden="true" className="circle circle-1"></div>
+            <div aria-hidden="true" className="circle circle-2"></div>
             <Header />
-
-            <hr />
 
             <Routes>
               <Route path="/" element={<Main />} />

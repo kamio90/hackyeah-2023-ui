@@ -19,6 +19,10 @@
         display: inline-flex;
         align-items: center;
 
+        @media all and (max-width: 992px) {
+            flex-basis: 50%;
+        }
+
         img {
             width: 100%;
             height: auto;
@@ -29,6 +33,21 @@
     &-description {
         flex-basis: calc(50% - 100px);
         padding-left: 20px;
+
+        @media all and (max-width: 992px) {
+            flex-basis: 50%;
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-content: center;
+
+            .training-title {
+                flex-basis: 100%;
+            }
+
+            .training-firm {
+                flex-basis: 100%;
+            }
+        }
 
         &-inner {
             display: flex;
@@ -47,13 +66,18 @@
         flex-basis: 50%;
         padding-right: 10px;
 
+        @media all and (max-width: 992px) {
+            flex-basis: 100%;
+        }
+
         &-desc {
-            flex-basis: 80%;
+            flex-basis: 70%;
 
             p {
                 margin-top: 0;
             }
         }
+        
 
         h3 {
             flex-basis: 20%;
@@ -61,12 +85,22 @@
         }
 
         &-buttons {
+            flex-basis: 30%;
+
+            @media all and (max-width: 992px) {
+                text-align: right;
+            }
+
             a {
                 padding: 5px 10px;
                 border-radius: 5px;
-                background-color: gray;
+                background-color: #6264FC;
                 color: #000;
                 transition: .4s;
+                text-decoration: none;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
 
                 &:hover {
                     color: #fff;

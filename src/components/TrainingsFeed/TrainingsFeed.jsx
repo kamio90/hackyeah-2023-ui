@@ -31,7 +31,7 @@ function TrainingsFeed() {
   }, []);
   return (
     <>
-      <div>
+      <section>
         <h1>Szkolenia</h1>
         {loading ? (
           <p>Ładowanie danych...</p>
@@ -71,7 +71,7 @@ function TrainingsFeed() {
             ))}
           </div>
         )}
-      </div>
+      </section>
     </>
   );
 }

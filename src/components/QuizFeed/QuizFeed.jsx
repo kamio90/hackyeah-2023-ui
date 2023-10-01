@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
 import './QuizFeed.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoins } from '@fortawesome/free-solid-svg-icons'
 
 function NewsFeed() {
     const [quizData, setQuizData] = useState([]);
@@ -27,8 +28,13 @@ function NewsFeed() {
     }, []);
 
     return (
-        <div>
-            <h1>Quizy</h1>
+        <section>
+            <header class="section-header">
+                <h1>Quizy</h1>
+                <p className="coins">Twoje punkty: 125 <FontAwesomeIcon icon={faCoins} /></p>
+                <p>Rozwiązuj quizy, aby zdobywać punkty. Punkty pozwalają na wyświetlanie użytkownikom atrakcyjniejszych ofert pracy!</p>
+            </header>
+            
             {loading ? (
                 <p>Ładowanie danych...</p>
             ) : (
@@ -47,7 +53,7 @@ function NewsFeed() {
                     ))}
                 </div>
             )}
-        </div>
+        </section>
     );
 }
 

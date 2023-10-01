@@ -52,7 +52,7 @@ function eventsFeed() {
         fetchData();
     }, []);
     return <>
-        <div>
+        <section>
             <h1>Wydarzenia</h1>
             {loading ? (
                 <p>Ładowanie danych...</p>
@@ -80,7 +80,7 @@ function eventsFeed() {
                     ))}
                 </Slider>
             )}
-        </div>
+        </section>
     </>
 }
 

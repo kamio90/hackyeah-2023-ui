@@ -19,6 +19,10 @@
         display: inline-flex;
         align-items: center;
 
+        @media all and (max-width: 480px) {
+            margin: 10px auto 0 auto;
+        }
+
         img {
             width: 100%;
             height: auto;
@@ -30,9 +34,28 @@
         flex-basis: calc(50% - 100px);
         padding-left: 20px;
 
+        @media all and (max-width: 992px) {
+            flex-basis: 50%;
+        }
+
+        @media all and (max-width: 768px) {
+            flex-basis: calc(100% - 100px);
+        }
+
+        @media all and (max-width: 480px) {
+            flex-basis: 100%;
+            margin-top: 10px;
+            text-align: center;
+            padding-left: 0;
+        }
+
         &-inner {
             display: flex;
             flex-wrap: wrap;
+
+            @media all and (max-width: 480px) {
+                justify-content: center;
+            }
 
             > div {
                 margin-right: 15px;
@@ -49,6 +72,15 @@
         align-items: flex-end;
         flex-grow: 1;
 
+        @media all and (max-width: 768px) {
+            flex-basis: 100%;
+            margin-top: 15px;
+        }
+
+        @media all and (max-width: 480px) {
+            align-items: center;
+        }
+
         .badges {
             display: flex;
             flex-wrap: wrap;
@@ -57,7 +89,7 @@
                 margin-left: 10px;
                 padding: 5px;
                 border-radius: 5px;
-                background-color: gray;
+                background-color: #6264FC;
                 color: #000;
             }
         }
